@@ -58,6 +58,18 @@ class MainWindow(QMainWindow):
         self.ui.progressBar.setRange(0, 0)
         if self.Catalog == "":
             QMessageBox.critical(self, "Error", "Please select a catalog!")
+            self.ui.pushButton.setEnabled(True)
+            self.ui.progressBar.setRange(0, 100)
+            self.Catalog = ""
+            return -1
+        try:
+            int(self.ui.lineEdit.text())
+        except ValueError:
+            QMessageBox.critical(self, "Error", "Please enter a integer value!")
+            self.ui.pushButton.setEnabled(True)
+            self.ui.progressBar.setRange(0, 100)
+            self.Catalog = ""
+            return -1
         self.a.emit(self.Catalog, int(eval(self.ui.lineEdit.text())))
         self.work_athread.start()
 

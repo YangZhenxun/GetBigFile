@@ -108,4 +108,3 @@ class Ui_MainWindow(object):
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"OK", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Select Catalog", None))
     # retranslateUi
-

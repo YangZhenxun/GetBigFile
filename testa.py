@@ -5,7 +5,7 @@ import sys
 
 dirs:list = []
 filenames:list = []
-start_dir:str = "D:\\"
+start_dir:str = "C:\\"
 for files_and_dirs in os.listdir(start_dir):
     if os.path.isdir(os.path.join(start_dir, files_and_dirs)):
         dirs.append(files_and_dirs)

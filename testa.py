@@ -2,6 +2,7 @@ import multitasking
 import os
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 
 def amain():
     dirs:list = []
@@ -16,7 +17,6 @@ def amain():
 
     multitasking.set_max_threads(len(dirs)+1)
 
-    @multitasking.task
     def k(dir_i: str):
         for dirpath, dirname, filenames in os.walk(os.path.join(start_dir, dir_i)):
             for filename in filenames:
@@ -32,17 +32,18 @@ def amain():
     print(dirs)
 
     start = time.time()
-    for dir_i in dirs:
-        k(dir_i)
-    for filename in filenames:
-        target_file = os.path.join(start_dir, filename)
-        if not os.path.isfile(target_file):
-            continue
-        size = os.path.getsize(target_file)
-        size = size//1024
-        if size >= filesize:
-            size = '{size}KB'.format(size=size)
-            print(target_file)
+    with ThreadPoolExecutor(max_workers=len(dirs)-10) as t:
+        for dir_i in dirs:
+            t.submit(k(dir_i))
+        for filename in filenames:
+            target_file = os.path.join(start_dir, filename)
+            if not os.path.isfile(target_file):
+                continue
+            size = os.path.getsize(target_file)
+            size = size//1024
+            if size >= filesize:
+                size = '{size}KB'.format(size=size)
+                print(target_file)
     end = time.time()
     print(end - start)
 

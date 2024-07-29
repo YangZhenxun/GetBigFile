@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>306</width>
+    <height>531</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Get Big File</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>File size:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit"/>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox">
+        <item>
+         <property name="text">
+          <string>B</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>KB</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>MB</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>GB</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TB</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox_2">
+        <item>
+         <property name="text">
+          <string>All Files</string>
+         </property>
+         <property name="icon">
+          <iconset theme="folder"/>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Document</string>
+         </property>
+         <property name="icon">
+          <iconset theme="document-new"/>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Music</string>
+         </property>
+         <property name="icon">
+          <iconset theme="QIcon::ThemeIcon::AudioCard"/>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Picture</string>
+         </property>
+         <property name="icon">
+          <iconset theme="emblem-photos"/>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Video</string>
+         </property>
+         <property name="icon">
+          <iconset theme="media-optical"/>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Media</string>
+         </property>
+         <property name="icon">
+          <iconset theme="applications-multimedia"/>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Application</string>
+         </property>
+         <property name="icon">
+          <iconset theme="document-properties"/>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Others</string>
+         </property>
+         <property name="icon">
+          <iconset theme="dialog-question"/>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <widget class="QScrollArea" name="scrollArea_2">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>286</width>
+         <height>400</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QListWidget" name="listWidget_2">
+          <property name="editTriggers">
+           <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QProgressBar" name="progressBar">
+      <property name="value">
+       <number>24</number>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>306</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionSearch_place"/>
+   </widget>
+   <widget class="QMenu" name="menuSetting">
+    <property name="title">
+     <string>Setting</string>
+    </property>
+    <widget class="QMenu" name="menuLanguage">
+     <property name="title">
+      <string>Language</string>
+     </property>
+     <property name="icon">
+      <iconset theme="accessories-character-map"/>
+     </property>
+     <addaction name="actionEnglish_UK"/>
+     <addaction name="actionEnglish_US"/>
+     <addaction name="actionzh_Hans"/>
+     <addaction name="actionzh_Hant"/>
+    </widget>
+    <addaction name="menuLanguage"/>
+    <addaction name="actionUpdate"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionHelp"/>
+    <addaction name="actionAbout"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuSetting"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSearch_place">
+   <property name="icon">
+    <iconset theme="folder-open"/>
+   </property>
+   <property name="text">
+    <string>Search place...</string>
+   </property>
+  </action>
+  <action name="actionEnglish_UK">
+   <property name="text">
+    <string>English(UK)</string>
+   </property>
+  </action>
+  <action name="actionEnglish_US">
+   <property name="text">
+    <string>English(US)</string>
+   </property>
+  </action>
+  <action name="actionzh_Hans">
+   <property name="text">
+    <string>中文（简体） </string>
+   </property>
+  </action>
+  <action name="actionzh_Hant">
+   <property name="text">
+    <string>中文（繁體）</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="icon">
+    <iconset theme="help-browser"/>
+   </property>
+   <property name="text">
+    <string>Help...</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset theme="help-about"/>
+   </property>
+   <property name="text">
+    <string>About?</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="icon">
+    <iconset theme="window-close"/>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionUpdate">
+   <property name="icon">
+    <iconset theme="emblem-synchronized"/>
+   </property>
+   <property name="text">
+    <string>Update</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -3,4 +3,13 @@ name = "cxx_usn_journal"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+name = "cxx_usn_journal"
+crate-type = ["rlib", "cdylib"]
+
 [dependencies]
+"libc" = "0.2"
+
+[dependencies.pyo3]
+version = "0.15.1"
+features = ["extension-module"]

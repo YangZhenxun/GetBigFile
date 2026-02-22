@@ -1,4 +1,3 @@
-use std::time::{Duration, Instant};
 use std::{collections::VecDeque, io::Write, path::PathBuf};
 extern crate input;
 
@@ -8,7 +7,6 @@ fn main() {
     let mut rustin = input::Input::new();
     let path: PathBuf = rustin.next().unwrap();
     let filesize: u64 = rustin.next().unwrap();
-    let start = Instant::now();
     if !path.exists() {
         println!("Path does not exist");
         return;
@@ -33,6 +31,4 @@ fn main() {
         }
         q.pop_front();
     }
-    let duration = start.elapsed();
-    println!("Time taken: {:?}", duration);
 }

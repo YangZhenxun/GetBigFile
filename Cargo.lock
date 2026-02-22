@@ -5,3 +5,10 @@ version = 4
 [[package]]
 name = "GetBigFile"
 version = "0.1.0"
+dependencies = [
+ "input",
+]
+
+[[package]]
+name = "input"
+version = "0.0.1"

@@ -1,8 +1,11 @@
-import sys
-import time
 import asyncio
+import sys
 import threading
-from aiopath import AsyncPath
+import time
+
+import anyio
+from anyio import Path
+
 
 async def files(filenames, filesize):
     target_files = []
@@ -11,11 +14,12 @@ async def files(filenames, filesize):
         if not await target_file.is_file():
             continue
         size = (await target_file.stat()).st_size
-        if size >= filesize*1024:
-            size = f'{size}KB'
+        if size >= filesize * 1024:
+            size = f"{size}KB"
             print(target_file)
             target_files.append(target_file)
     return target_files
+
 
 async def k(dir_i, filesize):
     target_files = []
@@ -24,13 +28,14 @@ async def k(dir_i, filesize):
         if not await target_file.is_file():
             continue
         size = (await target_file.stat()).st_size
-        if size >= filesize*1024:
-            size = f'{size}KB'
+        if size >= filesize * 1024:
+            size = f"{size}KB"
             print(target_file)
             target_files.append(target_file)
     return target_files
 
-async def a(st_dir: AsyncPath, drs: list, flnms: list) -> tuple[list, list]:
+
+async def a(st_dir: Path, drs: list, flnms: list) -> tuple[list, list]:
     async for fl_ad_drs in st_dir.iterdir():
         if await fl_ad_drs.is_dir():
             drs.append(await fl_ad_drs.resolve())
@@ -38,12 +43,14 @@ async def a(st_dir: AsyncPath, drs: list, flnms: list) -> tuple[list, list]:
             flnms.append(await fl_ad_drs.resolve())
     return drs, flnms
 
+
 async def amain():
-    start_dir = AsyncPath("C:/")
-    dirs:list = []
-    filenames:list = []
+    # start_dir = Path("C:/")
+    start_dir = Path(input("Enter directory path: "))
+    dirs: list = []
+    filenames: list = []
     t = asyncio.create_task(a(start_dir, dirs, filenames))
-    filesize = 1024*1024
+    filesize = 1
 
     start = time.time()
     dirs, filenames = await t
@@ -53,5 +60,6 @@ async def amain():
     print(all_r)
     end = time.time()
     print(end - start)
+
 
 asyncio.run(amain())
